@@ -1,0 +1,63 @@
+{
+    "product_type":  "acacia",
+    "title":  "Acacia",
+    "description":  "Sample data - replace with real stock.",
+    "updated_at":  "2026-10-07",
+    "lots":  [
+                 {
+                     "lot_id":  "lot_101",
+                     "lot_number":  101,
+                     "quantity_m3":  12.5,
+                     "number_of_logs":  24,
+                     "status":  "available",
+                     "price":  null,
+                     "class":  "A Grade",
+                     "length_range":  "5 to 10 feet",
+                     "girth_range":  "30 to 45 cm",
+                     "comment":  "Sample lot",
+                     "created_at":  "2026-10-05",
+                     "media":  {
+                                   "images":  [
+                                                  {
+                                                      "url":  "images/model/acacia/acacia_cut_1.jpg",
+                                                      "alt":  "Lot 101 - photo 1",
+                                                      "is_thumbnail":  true
+                                                  },
+                                                  {
+                                                      "url":  "images/our-products/acacia_wood.jpg",
+                                                      "alt":  "Lot 101 - photo 2",
+                                                      "is_thumbnail":  false
+                                                  }
+                                              ],
+                                   "videos":  [
+                                                  "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                                              ]
+                               }
+                 },
+                 {
+                     "lot_id":  "lot_102",
+                     "lot_number":  102,
+                     "quantity_m3":  15,
+                     "number_of_logs":  30,
+                     "status":  "available",
+                     "price":  null,
+                     "class":  "B Grade",
+                     "length_range":  "6 to 12 feet",
+                     "girth_range":  "25 to 40 cm",
+                     "comment":  null,
+                     "created_at":  "2026-10-06",
+                     "media":  {
+                                   "images":  [
+                                                  {
+                                                      "url":  "images/our-products/acacia_wood.jpg",
+                                                      "alt":  "Lot 102 - photo 1",
+                                                      "is_thumbnail":  true
+                                                  }
+                                              ],
+                                   "videos":  [
+
+                                              ]
+                               }
+                 }
+             ]
+}

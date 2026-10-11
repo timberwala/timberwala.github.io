@@ -311,20 +311,6 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 	}
 })(jQuery);
 
-/* FancyBox
- ========================================================*/
-;
-(function ($) {
-	var o = $('.thumb');
-	if (o.length > 0) {
-		include('js/jquery.fancybox.js');
-		include('js/jquery.fancybox-media.js');
-		$(document).ready(function () {
-			o.fancybox();
-		});
-	}
-})(jQuery);
-
 /* Owl Carousel
  ========================================================*/
 ;

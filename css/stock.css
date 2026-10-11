@@ -1,0 +1,278 @@
+/* Live stock section for product pages */
+.product-page .well3 { padding-top: 30px; padding-bottom: 20px; }
+.product-page .well3 h3 + .row { margin-top: 10px; }
+.product-page .well2 { padding-top: 30px; padding-bottom: 60px; }
+
+.stock { margin-top: 20px; text-align: left; }
+
+.stock-loading, .stock-empty {
+	padding: 40px 20px;
+	border: 1px dashed #b9b8b8;
+	border-radius: 6px;
+	text-align: center;
+	color: #666;
+}
+
+.stock-summary {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-bottom: 24px;
+}
+
+.stock-summary > div {
+	flex: 1 1 160px;
+	padding: 16px 20px;
+	border-radius: 6px;
+	background: #F3F3E7;
+	border-left: 4px solid #c76b23;
+}
+
+.stock-summary strong {
+	display: block;
+	font: 700 26px/1.2 "Fjalla One", "Open Sans", sans-serif;
+	color: #272727;
+}
+
+.stock-summary span {
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #777;
+}
+
+.stock-filters { margin-bottom: 24px; }
+
+.stock-filters button {
+	margin: 0 8px 8px 0;
+	padding: 8px 18px;
+	border: 1px solid #c9c8c0;
+	border-radius: 20px;
+	background: #fff;
+	color: #444;
+	cursor: pointer;
+}
+
+.stock-filters button.active {
+	border-color: #41a62c;
+	background: #41a62c;
+	color: #fff;
+}
+
+.lot-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 24px;
+}
+
+.lot-card {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border: 1px solid #e3e2da;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+	transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.lot-card:hover {
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+	transform: translateY(-2px);
+}
+
+.lot-card[hidden] { display: none; }
+
+.lot-media {
+	position: relative;
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	background: #ece9dc;
+}
+
+.lot-media[data-open] { cursor: pointer; }
+
+.lot-media img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.lot-nophoto {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color: #999;
+	transform: translateY(-50%);
+}
+
+.lot-status, .lot-count {
+	position: absolute;
+	padding: 3px 10px;
+	border-radius: 12px;
+	font: 700 11px/16px "Open Sans", sans-serif;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.lot-status { top: 10px; left: 10px; background: #41a62c; }
+.status-sold_out .lot-status { background: #888; }
+.status-sold_out .lot-media img { filter: grayscale(0.8); opacity: 0.7; }
+
+.lot-count { right: 10px; bottom: 10px; background: rgba(0, 0, 0, 0.6); text-transform: none; }
+
+.lot-body { display: flex; flex: 1; flex-direction: column; padding: 16px 18px 18px; }
+
+.lot-body h4 {
+	margin: 0 0 10px;
+	font: 400 22px/1.2 "Fjalla One", "Open Sans", sans-serif;
+	color: #272727;
+}
+
+.lot-specs {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 6px 14px;
+	margin: 0;
+	font-size: 14px;
+}
+
+.lot-specs dt { color: #8b8888; }
+.lot-specs dd { margin: 0; color: #272727; font-weight: 600; }
+
+.lot-comment {
+	margin: 12px 0 0;
+	padding: 8px 12px;
+	border-left: 3px solid #c76b23;
+	background: #faf9f3;
+	font-size: 13px;
+	color: #555;
+}
+
+.lot-actions { display: flex; gap: 10px; margin-top: auto; padding-top: 16px; }
+
+.lot-actions button, .lot-actions a {
+	flex: 1;
+	padding: 9px 12px;
+	border: 1px solid #272727;
+	border-radius: 4px;
+	background: #272727;
+	color: #fff;
+	font-size: 13px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.lot-actions .lot-wa { border-color: #25a244; background: #25a244; }
+.lot-actions button:hover, .lot-actions a:hover { opacity: 0.88; color: #fff; }
+
+/* Lightbox */
+body.lb-open { overflow: hidden; }
+
+.lb {
+	position: fixed;
+	z-index: 100000;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	background: rgba(15, 15, 15, 0.95);
+	color: #fff;
+}
+
+.lb-top { display: flex; align-items: center; gap: 16px; padding: 12px 20px; }
+.lb-title { flex: 1; font-weight: 600; }
+.lb-count { color: #bbb; font-size: 14px; }
+
+.lb-close, .lb-nav {
+	border: 0;
+	background: transparent;
+	color: #fff;
+	cursor: pointer;
+}
+
+.lb-close { font-size: 34px; line-height: 1; }
+
+.lb-stage { position: relative; display: flex; flex: 1; align-items: center; justify-content: center; min-height: 0; }
+.lb-view { display: flex; align-items: center; justify-content: center; max-width: 92%; max-height: 100%; }
+.lb-view img, .lb-view video { max-width: 100%; max-height: calc(100vh - 190px); border-radius: 4px; }
+
+.lb-nav { padding: 0 18px; font-size: 56px; line-height: 1; opacity: 0.8; }
+.lb-nav:hover { opacity: 1; }
+.lb.single .lb-nav { visibility: hidden; }
+
+.lb-thumbs { display: flex; gap: 8px; justify-content: center; padding: 12px; overflow-x: auto; }
+
+.lb-thumb {
+	position: relative;
+	flex: 0 0 auto;
+	width: 72px;
+	height: 54px;
+	padding: 0;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	background: #333;
+	opacity: 0.6;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.lb-thumb.active { border-color: #41a62c; opacity: 1; }
+.lb-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.lb-play { color: #fff; font-size: 18px; }
+
+@media (max-width: 480px) {
+	.lot-grid { grid-template-columns: 1fr; }
+	.lb-nav { padding: 0 8px; font-size: 40px; }
+}
+
+/* Enquiry panel */
+.enquiry-panel {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px 40px;
+	margin-top: 40px;
+	padding: 28px 32px;
+	border-radius: 8px;
+	border-left: 5px solid #c76b23;
+	background: #F3F3E7;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.enquiry-text { flex: 1 1 340px; }
+
+.enquiry-text h4 {
+	margin: 0 0 6px;
+	font: 400 24px/1.2 "Fjalla One", "Open Sans", sans-serif;
+	color: #272727;
+}
+
+.enquiry-text p { margin: 0; color: #555; }
+
+.enquiry-actions { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+.enquiry-btn {
+	display: inline-block;
+	padding: 12px 32px;
+	border-radius: 4px;
+	background: #c76b23;
+	color: #fff;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-decoration: none;
+	transition: background 0.2s;
+}
+
+.enquiry-btn:hover { background: #a85a1c; color: #fff; }
+
+.enquiry-phone { font-size: 13px; color: #777; }
+.enquiry-phone a { color: #272727; font-weight: 600; }

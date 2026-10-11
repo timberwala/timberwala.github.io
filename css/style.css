@@ -358,13 +358,7 @@ strong {
   padding-right: 42px;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
-  background: #f2f2f2;
-  background: -moz-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f2f2), color-stop(100%, #e4e4e4));
-  background: -webkit-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);
-  background: -o-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);
-  background: -ms-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);
-  background: linear-gradient(to bottom, #f2f2f2 0%, #e4e4e4 100%);
+  background: #F3F3E7;
   -webkit-box-shadow: 0 -5px 5px 0 rgba(0, 0, 0, 0.09);
   -moz-box-shadow: 0 -5px 5px 0 rgba(0, 0, 0, 0.09);
   box-shadow: 0 -5px 5px 0 rgba(0, 0, 0, 0.09);
@@ -646,7 +640,7 @@ strong {
 =========================================================*/
 .header {
   border-top: 4px solid #272727;
-  background: url(../images/pattern01.jpg) repeat;
+  background: #F3F3E7;
 }
 
 .header .brand {
@@ -754,11 +748,23 @@ strong {
 }
 
 /*==================     Brand     ======================*/
+.brand_name .brand_logo {
+  display: block;
+  width: 352px;
+  max-width: none;
+  margin: -99px 0 0 -62px;
+}
+
+.brand_name a {
+  display: block;
+  width: 235px;
+  height: 154px;
+  overflow: hidden;
+}
+
 .brand {
   display: inline-block;
   min-height: 71px;
-  padding: 90px 300 0 76px;
-  background: url(../images/logo.png) no-repeat 0 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1454,3 +1460,89 @@ button{
 .contactWhatsapp a img{
   width: 40px;
 }
+
+/*==================   Live stock indicator   ======================*/
+.live-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-left: 7px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #e53935;
+  box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.7);
+  -webkit-animation: live-blink 1.2s infinite;
+  animation: live-blink 1.2s infinite;
+}
+
+.live-badge {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 8px 2px 4px;
+  vertical-align: middle;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  font: 700 11px/16px "Open Sans", sans-serif;
+  letter-spacing: 1px;
+  color: #FFF;
+}
+
+.live-badge .live-dot {
+  margin-left: 3px;
+  margin-right: 4px;
+}
+
+@-webkit-keyframes live-blink {
+  0% { opacity: 1; box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.7); }
+  50% { opacity: 0.35; box-shadow: 0 0 0 6px rgba(229, 57, 53, 0); }
+  100% { opacity: 1; box-shadow: 0 0 0 0 rgba(229, 57, 53, 0); }
+}
+
+@keyframes live-blink {
+  0% { opacity: 1; box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.7); }
+  50% { opacity: 0.35; box-shadow: 0 0 0 6px rgba(229, 57, 53, 0); }
+  100% { opacity: 1; box-shadow: 0 0 0 0 rgba(229, 57, 53, 0); }
+}
+
+.product-page .product-intro p { margin-bottom: 10px; }
+.check-lots-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.check-lots-btn .live-dot {
+  margin: 0;
+}
+.product-page .product-intro--split {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 14px;
+}
+.product-page .product-copy {
+  flex: 1 1 66%;
+}
+.product-page .product-media {
+  flex: 0 1 34%;
+}
+.product-page .product-media img {
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 3px;
+}
+.product-page .product-media--double {
+  display: grid;
+  gap: 10px;
+}
+@media (max-width: 900px) {
+  .product-page .product-intro--split {
+    display: block;
+  }
+  .product-page .product-media {
+    margin-top: 14px;
+  }
+}
+.live-stock-box { padding: 30px; border: 1px dashed #999; text-align: center; }
