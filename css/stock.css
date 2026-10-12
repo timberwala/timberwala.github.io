@@ -153,10 +153,10 @@
 	color: #555;
 }
 
-.lot-actions { display: flex; gap: 10px; margin-top: auto; padding-top: 16px; }
+.lot-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 16px; }
 
 .lot-actions button, .lot-actions a {
-	flex: 1;
+	flex: 1 1 130px;
 	padding: 9px 12px;
 	border: 1px solid #272727;
 	border-radius: 4px;
@@ -169,7 +169,20 @@
 }
 
 .lot-actions .lot-wa { border-color: #25a244; background: #25a244; }
+.lot-actions .lot-share-wa { border-color: #128c7e; background: #128c7e; }
 .lot-actions button:hover, .lot-actions a:hover { opacity: 0.88; color: #fff; }
+
+.lot-card.lot-highlight {
+	border-color: #e53935;
+	box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.2), 0 10px 24px rgba(0, 0, 0, 0.16);
+	animation: lot-highlight-pulse 1.2s ease-in-out 3;
+}
+
+@keyframes lot-highlight-pulse {
+	0% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.5), 0 10px 24px rgba(0, 0, 0, 0.16); }
+	70% { box-shadow: 0 0 0 12px rgba(229, 57, 53, 0), 0 10px 24px rgba(0, 0, 0, 0.16); }
+	100% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0), 0 10px 24px rgba(0, 0, 0, 0.16); }
+}
 
 /* Lightbox */
 body.lb-open { overflow: hidden; }

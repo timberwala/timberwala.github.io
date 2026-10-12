@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Contact Us</title>
+  <title data-i18n="contact.page_title">Contact Us</title>
   <meta charset="utf-8">
   <meta name="format-detection" content="telephone=no"/>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -26,7 +26,7 @@
   <!--========================================================
                             CONTENT
   =========================================================-->
-  <section id="content" class="content">
+  <section id="content" class="content contact-page">
 
     <div class="well3 bg-secondary">
       <div class="container">
@@ -53,39 +53,39 @@
       <div class="well2">
         <div class="container">
           <div class="contactWhatsapp">
-            <a href="https://wa.me/919019531346" title="Contact Through WhatsApp">
-              <img src="images/whatsapp_icon.svg" alt="" /> Contact Through WhatsApp
+            <a href="https://wa.me/919019531346" title="Contact Through WhatsApp" data-i18n-title="contact.whatsapp_cta">
+              <img src="images/whatsapp_icon.svg" alt="" /> <span data-i18n="contact.whatsapp_cta">Contact Through WhatsApp</span>
             </a>
           </div>
 
-          <div class="or"><strong class="text">OR</strong> <span></span></div>
+          <div class="or"><strong class="text" data-i18n="contact.or">OR</strong> <span></span></div>
 
-          <h3>Contact form</h3>          
+          <h3 data-i18n="contact.form_title">Contact form</h3>          
           <form   id="my-form"
           action="https://formspree.io/f/mdoppyrw"
           method="POST"
         >
-            <label  for="fname">Full Name</label>
+            <label  for="fname" data-i18n="contact.full_name">Full Name</label>
             <input required  type="text" id="fname" name="fullname" placeholder="Your name..">
         
-            <label for="lname">Phone Number</label>
+            <label for="lname" data-i18n="contact.phone_number">Phone Number</label>
             <input required type="text" id="phone" name="phone" placeholder="Your Phone Number..">
         
-            <label for="lname">Email </label>
+            <label for="lname" data-i18n="contact.email">Email </label>
             <input required  type="text" id="phone" name="email" placeholder="Your Email ..">
         
          
         
-            <label for="country">Product</label>
+            <label for="country" data-i18n="contact.product">Product</label>
             <select required  id="produc" name="product">
-              <option value="" disabled selected hidden>Select Timber Type</option>
+              <option value="" disabled selected hidden data-i18n="contact.select_timber">Select Timber Type</option>
               <option value="East Indian RoseWood(Dalbergia Latifolia)">East Indian RoseWood(Dalbergia Latifolia)</option>
               <option value="Acacia Round Logs">Acacia</option>
               <option value="Dandeli Teak">Dandeli Teak</option>
             </select>
         
-            <label for="subject">Message</label>
-            <textarea id="message" name="message" placeholder="Specify Your Requirements" style="height:200px"></textarea>
+            <label for="subject" data-i18n="contact.message">Message</label>
+            <textarea id="message" name="message" placeholder="Specify Your Requirements" data-i18n-placeholder="contact.message_placeholder" style="height:200px"></textarea>
            <div class="captcha">
 	<div class="spinner">
 		<label>
@@ -93,7 +93,7 @@
 			<span class="checkmark"><span>&nbsp;</span></span>
 		</label>
 	</div>
-	<div class="text">
+	<div class="text" data-i18n="contact.not_robot">
 		I'm not a robot
 	</div>
 	<div class="logo">
@@ -102,7 +102,7 @@
 		<small>Privacy - Terms</small>
 	</div>
 </div><br>
-            <button class="button" id="my-form-button">Submit</button>
+            <button class="button" id="my-form-button" data-i18n="contact.submit">Submit</button>
             <br>
             <p id="my-form-status"></p>
       
@@ -147,13 +147,14 @@
       form.reset();
       button.style = "background-color:blue";
       button.innerText = "Submitted";
-      status.innerHTML = "<h3>Thanks For Contacting CenturyWood Timbers. We will Get You Shortly</h3>";
+      var msg = (window.CW_I18N && window.CW_I18N.t) ? window.CW_I18N.t("contact.form_success") : "Thanks For Contacting CenturyWood Timbers. We will Get You Shortly";
+      status.innerHTML = "<h3>" + msg + "</h3>";
       captchaSpinCheck.disabled = false;
      
     }
 
     function error() {
-      status.innerHTML = "Oops! There was a problem.";
+      status.innerHTML = (window.CW_I18N && window.CW_I18N.t) ? window.CW_I18N.t("contact.form_error") : "Oops! There was a problem.";
     }
 
     // handle the form submission event

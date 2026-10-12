@@ -669,6 +669,27 @@ strong {
   margin-top: 23px;
 }
 
+.lang-switcher {
+  float: right;
+  margin: 14px 0 0 12px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.lang-switcher label {
+  margin-right: 6px;
+  color: #444;
+}
+
+.lang-switcher select {
+  height: 30px;
+  border: 1px solid #c9c8c0;
+  border-radius: 4px;
+  padding: 3px 8px;
+  background: #fff;
+  color: #333;
+}
+
 @media (max-width: 1299px) {
   .header .social-list {
     display: none;
@@ -694,6 +715,11 @@ strong {
   }
   .header .brand, .header_info, .header .search-form {
     float: none;
+  }
+  .lang-switcher {
+    float: none;
+    display: inline-block;
+    margin: 10px 0;
   }
   .header .brand + .search-form {
     margin-top: 30px;
@@ -809,8 +835,16 @@ strong {
   color: #464040;
 }
 
+.fa-facebook {
+  color: #1877F2;
+}
+
 .social-list .fa:hover {
   color: #8ca87d;
+}
+
+.social-list .fa-facebook:hover {
+  color: #1877F2;
 }
 
 /*=======================================================
@@ -1455,10 +1489,40 @@ button{
   line-height: 36px;
 }
 .contactWhatsapp a{
-  color: #000000;
+  color: #25D366;
+  font-weight: 700;
 }
 .contactWhatsapp a img{
   width: 40px;
+  vertical-align: middle;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(27%) saturate(1155%) hue-rotate(88deg) brightness(95%) contrast(90%);
+}
+.contactWhatsapp a:hover{
+  color: #1fa955;
+}
+
+/* Contact page spacing cleanup */
+.contact-page .well3 {
+  padding-top: 42px;
+  padding-bottom: 20px;
+}
+
+.contact-page .well2 {
+  padding-top: 0;
+  padding-bottom: 78px;
+}
+
+.contact-page .or {
+  margin: 28px 0;
+}
+
+/* Home page spacing cleanup */
+.home-page .well2 {
+  padding-top: 52px;
+}
+
+.home-page h3 + .owl-carousel {
+  margin-top: 30px;
 }
 
 /*==================   Live stock indicator   ======================*/
