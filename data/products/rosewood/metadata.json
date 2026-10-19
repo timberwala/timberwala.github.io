@@ -1,0 +1,68 @@
+{
+    "product_type":  "rosewood",
+    "title":  "East Indian RoseWood(Dalbergia Latifolia)",
+    "description":  "Sample data - replace with real stock.",
+    "updated_at":  "2026-10-07",
+    "lots":  [
+                 {
+                     "lot_id":  "lot_201",
+                     "lot_number":  201,
+                     "quantity_m3":  6.2,
+                     "number_of_logs":  12,
+                     "status":  "available",
+                     "price":  null,
+                     "class":  "Premium",
+                     "length_range":  "4 to 8 feet",
+                     "girth_range":  "40 to 60 cm",
+                     "comment":  "Sample lot",
+                     "created_at":  "2026-10-04",
+                     "media":  {
+                                   "images":  [
+                                                  {
+                                                      "url":  "images/model/rose_wood_logs_1.jpeg",
+                                                      "alt":  "Lot 201 - photo 1",
+                                                      "is_thumbnail":  true
+                                                  },
+                                                  {
+                                                      "url":  "images/model/rose_wood_logs_2.jpeg",
+                                                      "alt":  "Lot 201 - photo 2",
+                                                      "is_thumbnail":  false
+                                                  },
+                                                  {
+                                                      "url":  "images/model/rose_wood_color_1.jpg",
+                                                      "alt":  "Lot 201 - photo 3",
+                                                      "is_thumbnail":  false
+                                                  }
+                                              ],
+                                   "videos":  [
+                                                  "https://www.w3schools.com/html/mov_bbb.mp4"
+                                              ]
+                               }
+                 },
+                 {
+                     "lot_id":  "lot_202",
+                     "lot_number":  202,
+                     "quantity_m3":  4,
+                     "number_of_logs":  8,
+                     "status":  "sold_out",
+                     "price":  null,
+                     "class":  "Premium",
+                     "length_range":  "5 to 9 feet",
+                     "girth_range":  "35 to 55 cm",
+                     "comment":  null,
+                     "created_at":  "2026-09-20",
+                     "media":  {
+                                   "images":  [
+                                                  {
+                                                      "url":  "images/model/rose_wood_logs_2.jpeg",
+                                                      "alt":  "Lot 202 - photo 1",
+                                                      "is_thumbnail":  true
+                                                  }
+                                              ],
+                                   "videos":  [
+
+                                              ]
+                               }
+                 }
+             ]
+}

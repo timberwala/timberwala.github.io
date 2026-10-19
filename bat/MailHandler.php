@@ -1,6 +1,6 @@
 <?php
-	$owner_email='#';
-	//SMTP server settings	
+	$owner_email='enquiry@centurywoodtimbers.com';
+	//SMTP server settings
 	$host = '';
     $port = '465';//"587";
     $username = '';

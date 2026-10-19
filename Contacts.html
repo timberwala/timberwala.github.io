@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Contacts</title>
+  <title data-i18n="contact.page_title">Contact Us</title>
   <meta charset="utf-8">
   <meta name="format-detection" content="telephone=no"/>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -26,27 +26,46 @@
   <!--========================================================
                             CONTENT
   =========================================================-->
-  <section id="content" class="content">
+  <section id="content" class="content contact-page">
 
     <div class="well3 bg-secondary">
       <div class="container">
-        <h3>Our addresses: due to covid 19 our support team is working virually.</h3>
-
         <div class="row">
           <div class="grid_4">
             <address class="addr">
               <p>
-			2nd Cross,Dinnur Road. <br/>
-			RT nagar Bangalore, Karnataka India.
+			Opposite Anthony Church, Main Road, <br/>Old Dandeli, Dandeli 581325, Karnataka India.
               </p>
               <dl>
                 <dt>Telephone:</dt>
                 <dd>+91 9019531346</dd>
               </dl>
               <p>E-mail:
-                <a href="#"> support@timberwala.in</a>
+                <a href="mailto:enquiry@centurywoodtimbers.com"> enquiry@centurywoodtimbers.com</a>
               </p>
             </address>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="well2">
+      <div class="container">
+        <h3>Why Choose CenturyWood Timbers</h3>
+        <div class="row">
+          <div class="grid_6">
+            <ul class="marked-list">
+              <li>Legally sourced timber through the Forest Department.</li>
+              <li>Genuine Dandeli Teak for premium teak requirements.</li>
+              <li>Transparent stock with lot-wise details and media.</li>
+            </ul>
+          </div>
+          <div class="grid_6">
+            <ul class="marked-list">
+              <li>Transportation support for smooth delivery planning.</li>
+              <li>Fast response on call, WhatsApp, and enquiry form.</li>
+              <li>Reliable assistance from selection to dispatch.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -56,47 +75,40 @@
       <div class="well2">
         <div class="container">
           <div class="contactWhatsapp">
-            <a href="https://wa.me/919019531346" title="Contact Through WhatsApp">
-              <img src="images/whatsapp_icon.svg" alt="" /> Contact Through WhatsApp
+            <a href="https://wa.me/919019531346" title="Contact Through WhatsApp" data-i18n-title="contact.whatsapp_cta">
+              <img src="images/whatsapp_icon.svg" alt="" /> <span data-i18n="contact.whatsapp_cta">Contact Through WhatsApp</span>
             </a>
           </div>
 
-          <div class="or"><strong class="text">OR</strong> <span></span></div>
+          <div class="or"><strong class="text" data-i18n="contact.or">OR</strong> <span></span></div>
 
-          <h3>Contact form</h3>          
+          <h3 data-i18n="contact.form_title">Contact form</h3>          
           <form   id="my-form"
           action="https://formspree.io/f/mdoppyrw"
           method="POST"
+          enctype="multipart/form-data"
         >
-            <label  for="fname">Full Name</label>
+            <label  for="fname" data-i18n="contact.full_name">Full Name</label>
             <input required  type="text" id="fname" name="fullname" placeholder="Your name..">
         
-            <label for="lname">Phone Number</label>
+            <label for="lname" data-i18n="contact.phone_number">Phone Number</label>
             <input required type="text" id="phone" name="phone" placeholder="Your Phone Number..">
         
-            <label for="lname">Email </label>
+            <label for="lname" data-i18n="contact.email">Email </label>
             <input required  type="text" id="phone" name="email" placeholder="Your Email ..">
         
          
         
-            <label for="country">Product</label>
+            <label for="country" data-i18n="contact.product">Product</label>
             <select required  id="produc" name="product">
-              <option value="" disabled selected hidden>Select Timber Type</option>
+              <option value="" disabled selected hidden data-i18n="contact.select_timber">Select Timber Type</option>
               <option value="East Indian RoseWood(Dalbergia Latifolia)">East Indian RoseWood(Dalbergia Latifolia)</option>
               <option value="Acacia Round Logs">Acacia</option>
-              <option value="Pterocarpus Marsupium">Pterocarpus Marsupium</option>
-              <option value="Terminalia Paniculata">Terminalia Paniculata</option>
-              <option value="Terminalia Tomentosa">Terminalia Tomentosa</option>
-              <option value="Xylia Xylocarpa">Xylia Xylocarpa</option>
-              <option value="Grwia Tilaefolia">Grwia Tilaefolia</option>
-              <option value="Mitragyna Parvifolia">Mitragyna Parvifolia</option>
-              <option value="Adina Cordifolia">Adina Cordifolia</option>
-              <option value="Anogeissus Latifolia">Anogeissus Latifolia</option>
-              <option value="Anogeissus Latifolia">East Indian Teak Wood</option>
+              <option value="Dandeli Teak">Dandeli Teak</option>
             </select>
         
-            <label for="subject">Message</label>
-            <textarea id="message" name="message" placeholder="Specify Your Requirements" style="height:200px"></textarea>
+            <label for="subject" data-i18n="contact.message">Message</label>
+            <textarea id="message" name="message" placeholder="Specify Your Requirements" data-i18n-placeholder="contact.message_placeholder" style="height:200px"></textarea>
            <div class="captcha">
 	<div class="spinner">
 		<label>
@@ -104,7 +116,7 @@
 			<span class="checkmark"><span>&nbsp;</span></span>
 		</label>
 	</div>
-	<div class="text">
+	<div class="text" data-i18n="contact.not_robot">
 		I'm not a robot
 	</div>
 	<div class="logo">
@@ -113,7 +125,7 @@
 		<small>Privacy - Terms</small>
 	</div>
 </div><br>
-            <button class="button" id="my-form-button">Submit</button>
+            <button class="button" id="my-form-button" data-i18n="contact.submit">Submit</button>
             <br>
             <p id="my-form-status"></p>
       
@@ -131,168 +143,6 @@
   =========================================================-->
   <footer id="footer" class="footer"></footer>
 
-  <div class="owl-carousel">
-    <div class="item">
-      <a rel="gallery"
-        title="East Indian RoseWood(Dalbergia Latifolia)"
-        class="thumb fancybox" href="#one"> <img
-        src="images/our-products/rose_wood.jpeg" alt="" /> <span
-        class="thumb_overlay"></span>
-
-        <div id="vestibulum" class="thumb_cnt">
-          <h3>East Indian RoseWood(Dalbergia Latifolia)</h3>
-
-          <p>East Indian RoseWood</p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-
-        </div>
-
-      </a> <a rel="gallery" title="East Indian Teak Wood  "
-        class="thumb fancybox" href="#two"> <img
-        src="images/our-products/teak_wood.jpeg" alt="" /> <span
-        class="thumb_overlay"></span>
-
-        <div class="thumb_cnt">
-          <h3>East Indian Teak Wood  </h3>
-
-          <p></p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-        </div>
-      </a>
-    </div>
-
-    <div class="item">
-      <a rel="gallery" title="Indian Acacia"
-        class="thumb fancybox" href="#three"> <img
-        src="images/our-products/acacia_wood.jpg" alt="" /> <span
-        class="thumb_overlay"></span>
-
-        <div class="thumb_cnt">
-          <h3>Acacia</h3>
-
-          <p></p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-        </div>
-      </a> <a rel="gallery" title="Terminalia Paniculata"
-        class="thumb fancybox" href="#four"> <img
-        src="images/page-1_img05.jpg" alt="" /> <span
-        class="thumb_overlay"></span>
-
-        <div class="thumb_cnt">
-          <h3>Terminalia Paniculata</h3>
-
-          <p>Fusce suscipiibus et magnis dis parient montes, nascetur
-            ride feugiat malesuada odio.</p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-        </div>
-      </a>
-    </div>
-    <div class="item">
-      <a class="thumb"<a rel="gallery"
-        title="Terminalia Tomentosa" class="thumb fancybox" href="#five">
-          <img src="images/page-1_img03.jpg" alt="" /> <span
-          class="thumb_overlay"></span>
-
-          <div class="thumb_cnt">
-            <h3>Terminalia Tomentosa</h3>
-
-            <p>Fusce suscipiibus et magnis dis parient montes,
-              nascetur ride feugiat malesuada odio.</p>
-            <span href="#products"><button>Details</button></span> <span
-              onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-          </div>
-      </a> <a rel="gallery" title="Terminalia Tomentosa"
-        class="thumb fancybox" href="#six"> <img
-          src="images/our-products/jamba_wood.jpg" alt="" /> <span
-          class="thumb_overlay"></span>
-
-          <div class="thumb_cnt">
-            <h3>Xylia Xylocarpa</h3>
-
-            <p>Fusce suscipiibus et magnis dis parient montes,
-              nascetur ride feugiat malesuada odio.</p>
-            <span href="#products"><button>Details</button></span> <span
-              onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-          </div>
-      </a>
-    </div>
-    <div class="item">
-      <a rel="gallery" title="Grwia Tilaefolia" class="thumb fancybox"
-        href="#seven"> <img src="images/page-1_img01.jpg" alt="" />
-        <span class="thumb_overlay"></span>
-
-        <div class="thumb_cnt">
-          <h3>Grwia Tilaefolia</h3>
-
-          <p>Fusce suscipiibus et magnis dis parient montes, nascetur
-            ride feugiat malesuada odio.</p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-        </div>
-      </a> <a rel="gallery" title="Mitragyna Parvifolia"
-        class="thumb fancybox" href="#eight"> <img
-        src="images/page-1_img04.jpg" alt="" /> <span
-        class="thumb_overlay"></span>
-
-        <div class="thumb_cnt">
-          <h3>Mitragyna Parvifolia</h3>
-
-          <p>Fusce suscipiibus et magnis dis parient montes, nascetur
-            ride feugiat malesuada odio.</p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-        </div>
-      </a>
-    </div>
-    <div class="item">
-      <a rel="gallery" title="Adina Cordifolia" class="thumb fancybox"
-        href="#nine"> <img src="images/page-1_img01.jpg" alt="" />
-        <span class="thumb_overlay"></span>
-
-        <div class="thumb_cnt">
-          <h3>Adina Cordifolia</h3>
-
-          <p>Fusce suscipiibus et magnis dis parient montes, nascetur
-            ride feugiat malesuada odio.</p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-        </div>
-      </a> <a rel="gallery" title="Anogeissus Latifolia"
-        class="thumb fancybox" href="#ten"> <img
-        src="images/page-1_img04.jpg" alt="" /> <span
-        class="thumb_overlay"></span>
-
-        <div class="thumb_cnt">
-          <h3>Anogeissus Latifolia</h3>
-
-          <p>Fusce suscipiibus et magnis dis parient montes, nascetur
-            ride feugiat malesuada odio.</p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-        </div>
-      </a>
-    </div>
-    
-    <div class="item">
-       <a rel="gallery" title="Pterocarpus Marsupium"
-        class="thumb fancybox" href="#eleven"> <img
-        src="images/page-1_img04.jpg" alt="" /> <span
-        class="thumb_overlay"></span>
-
-        <div class="thumb_cnt">
-          <h3> Pterocarpus Marsupium </h3>
-
-          <p></p>
-          <span href="#products"><button>Details</button></span> <span
-            onclick="location.href='Contacts.html'"><button>Enquiry</button></span>
-        </div>
-      </a>
-    </div>
-  </div>
 </div>
 <script>
   function StopEventPropagation(event) {
@@ -313,6 +163,9 @@
     var button = document.getElementById("my-form-button");
     var status = document.getElementById("my-form-status");
     var captchaSpinCheck= document.getElementById("captchaSpinCheck");
+    var attachmentInput = document.getElementById("attachment");
+    var MAX_ATTACHMENT_SIZE = 10 * 1024 * 1024;
+    var ALLOWED_ATTACHMENT_EXTENSIONS = ["pdf", "doc", "docx", "txt", "jpg", "jpeg", "png", "zip", "rar"];
 
     // Success and Error functions for after the form is submitted
     
@@ -320,19 +173,38 @@
       form.reset();
       button.style = "background-color:blue";
       button.innerText = "Submitted";
-      status.innerHTML = "<h3>Thanks For Contacting Timberwala We will Get You Shortly</h3>";
+      var msg = (window.CW_I18N && window.CW_I18N.t) ? window.CW_I18N.t("contact.form_success") : "Thanks For Contacting CenturyWood Timbers. We will Get You Shortly";
+      status.innerHTML = "<h3>" + msg + "</h3>";
       captchaSpinCheck.disabled = false;
      
     }
 
-    function error() {
-      status.innerHTML = "Oops! There was a problem.";
+    function error(message) {
+      status.innerHTML = message || ((window.CW_I18N && window.CW_I18N.t) ? window.CW_I18N.t("contact.form_error") : "Oops! There was a problem.");
     }
 
     // handle the form submission event
 
     form.addEventListener("submit", function(ev) {
       ev.preventDefault();
+      if (attachmentInput && attachmentInput.files && attachmentInput.files.length > 0 && attachmentInput.files[0].size > MAX_ATTACHMENT_SIZE) {
+        var sizeMsg = (window.CW_I18N && window.CW_I18N.t)
+          ? window.CW_I18N.t("contact.attachment_size_error")
+          : "Attachment must be 10MB or smaller.";
+        status.innerHTML = sizeMsg;
+        return;
+      }
+      if (attachmentInput && attachmentInput.files && attachmentInput.files.length > 0) {
+        var fileName = attachmentInput.files[0].name || "";
+        var extension = fileName.indexOf(".") > -1 ? fileName.split(".").pop().toLowerCase() : "";
+        if (ALLOWED_ATTACHMENT_EXTENSIONS.indexOf(extension) === -1) {
+          var typeMsg = (window.CW_I18N && window.CW_I18N.t)
+            ? window.CW_I18N.t("contact.attachment_type_error")
+            : "Invalid attachment type. Please upload PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, or RAR files.";
+          status.innerHTML = typeMsg;
+          return;
+        }
+      }
       var data = new FormData(form);
       ajax(form.method, form.action, data, success, error);
     });
@@ -349,7 +221,21 @@
       if (xhr.status === 200) {
         success(xhr.response, xhr.responseType);
       } else {
-        error(xhr.status, xhr.response, xhr.responseType);
+        var message = "";
+        try {
+          var response = JSON.parse(xhr.responseText || "{}");
+          if (response && response.errors && response.errors.length && response.errors[0].message) {
+            message = response.errors[0].message;
+          } else if (response && response.error) {
+            message = response.error;
+          }
+        } catch (e) {}
+
+        if (/File Uploads Not Permitted/i.test(message)) {
+          message = "Attachments are not enabled for this contact form yet. Please send files separately to enquiry@centurywoodtimbers.com or by WhatsApp.";
+        }
+
+        error(message);
       }
     };
     xhr.send(data);
@@ -362,8 +248,7 @@
 	$(function() {
 		$("#header").load("Header.html");
 		$("#footer").load("footer.html");
-		$("a.fancybox").fancybox();
-		$(".menu-toggle a").click(function(){ 
+				$(".menu-toggle a").click(function(){ 
       	$(".menu").slideToggle(700);
 		});
 	});

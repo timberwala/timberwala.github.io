@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CenturyWood Stock Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<section id="login-screen" class="screen">
+	<form id="login-form" class="card" autocomplete="off">
+		<h1>Stock Admin</h1>
+		<p class="hint">Sign in with your admin username and password.</p>
+		<label>Username
+			<input name="username" required autocomplete="username">
+		</label>
+		<label>Password
+			<input name="password" type="password" required autocomplete="current-password">
+		</label>
+		<p id="login-msg" class="msg"></p>
+		<button id="login-btn" class="btn primary wide" type="submit">Log in</button>
+	</form>
+</section>
+
+<section id="app-screen" class="screen" hidden>
+	<header class="topbar">
+		<div>
+			<h1>Stock Admin</h1>
+			<p class="hint">Manage live lots and media in R2.</p>
+		</div>
+		<div class="toolbar">
+			<select id="product"></select>
+			<button id="add-lot" class="btn">+ Add lot</button>
+			<button id="save-all" class="btn primary" disabled>Save changes</button>
+			<button id="logout" class="btn">Log out</button>
+		</div>
+	</header>
+
+	<p id="app-msg" class="msg"></p>
+
+	<section class="metrics">
+		<article class="metric">
+			<strong id="metric-total">0</strong>
+			<span>Total lots</span>
+		</article>
+		<article class="metric">
+			<strong id="metric-available">0</strong>
+			<span>Available</span>
+		</article>
+		<article class="metric">
+			<strong id="metric-sold">0</strong>
+			<span>Sold out</span>
+		</article>
+		<article class="metric">
+			<strong id="metric-volume">0</strong>
+			<span>Available volume (m3)</span>
+		</article>
+	</section>
+
+	<main class="table-wrap">
+		<table id="lots-table">
+			<thead>
+				<tr>
+					<th>Lot</th>
+					<th>Status</th>
+					<th>Qty (m3)</th>
+					<th>Logs</th>
+					<th>Class</th>
+					<th>Media</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		<p id="empty-msg" class="empty" hidden>No lots yet. Click "Add lot".</p>
+	</main>
+</section>
+
+<dialog id="lot-dialog">
+	<form id="lot-form" method="dialog">
+		<h2 id="lot-dialog-title">Lot</h2>
+		<div class="grid">
+			<label>Depot code
+				<select name="depot_code" required>
+					<option value="">Select depot</option>
+					<option value="DAN">DAN</option>
+					<option value="KUL">KUL</option>
+					<option value="BAG">BAG</option>
+					<option value="KIR">KIR</option>
+					<option value="MUN">MUN</option>
+					<option value="TAV">TAV</option>
+					<option value="GUN">GUN</option>
+					<option value="IDA">IDA</option>
+					<option value="KAT">KAT</option>
+					<option value="HAT">HAT</option>
+					<option value="SIR">SIR</option>
+					<option value="MAN">MAN</option>
+					<option value="SAG">SAG</option>
+					<option value="ANW">ANW</option>
+					<option value="HOS">HOS</option>
+					<option value="MKB">MKB</option>
+					<option value="TIR">TIR</option>
+				</select>
+			</label>
+			<label>Auction date
+				<input name="auction_date" type="date" required>
+			</label>
+			<label>Actual lot number
+				<input name="actual_lot_number" maxlength="50" required>
+			</label>
+			<label>Status
+				<select name="status">
+					<option value="available">Available</option>
+					<option value="sold_out">Sold out</option>
+				</select>
+			</label>
+			<label>Quantity (m3)
+				<input name="quantity_m3" type="number" min="0.01" step="0.01" required>
+			</label>
+			<label>No. of logs
+				<input name="number_of_logs" type="number" min="0">
+			</label>
+			<label>Class
+				<input name="class" maxlength="50">
+			</label>
+			<label>Price
+				<input name="price" maxlength="50">
+			</label>
+			<label>Length range
+				<input name="length_range" maxlength="50">
+			</label>
+			<label>Girth range
+				<input name="girth_range" maxlength="50">
+			</label>
+		</div>
+
+		<label>Comment
+			<textarea name="comment" rows="2" maxlength="500"></textarea>
+		</label>
+
+		<fieldset>
+			<legend>Photos and videos</legend>
+			<div id="media-grid" class="media-grid"></div>
+			<input id="file-picker" type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/webm">
+			<small>Allowed: JPG, PNG, WebP, MP4, WebM. Max 90 MB each. Click a photo to mark as cover.</small>
+			<p id="upload-msg" class="msg"></p>
+		</fieldset>
+
+		<div class="actions">
+			<button id="cancel-lot" class="btn" type="button">Close</button>
+			<button class="btn primary" type="submit">Done</button>
+		</div>
+	</form>
+</dialog>
+
+<script src="js/stock-config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+    "product_type":  "dandeli-teak",
+    "title":  "Dandeli Teak (Tectona grandis)",
+    "description":  "Sample data - replace with real stock.",
+    "updated_at":  "2026-10-07",
+    "lots":  [
+                 {
+                     "lot_id":  "lot_301",
+                     "lot_number":  301,
+                     "quantity_m3":  20,
+                     "number_of_logs":  40,
+                     "status":  "available",
+                     "price":  null,
+                     "class":  "Export",
+                     "length_range":  "8 to 14 feet",
+                     "girth_range":  "50 to 80 cm",
+                     "comment":  "Sample lot",
+                     "created_at":  "2026-10-03",
+                     "media":  {
+                                   "images":  [
+                                                  {
+                                                      "url":  "images/model/teak/teak_logs_1.jpeg",
+                                                      "alt":  "Lot 301 - photo 1",
+                                                      "is_thumbnail":  true
+                                                  },
+                                                  {
+                                                      "url":  "images/model/teak/teak_color_1.jpeg",
+                                                      "alt":  "Lot 301 - photo 2",
+                                                      "is_thumbnail":  false
+                                                  },
+                                                  {
+                                                      "url":  "images/model/teak/teak_color_2.jpeg",
+                                                      "alt":  "Lot 301 - photo 3",
+                                                      "is_thumbnail":  false
+                                                  }
+                                              ],
+                                   "videos":  [
+
+                                              ]
+                               }
+                 }
+             ]
+}
