@@ -186,18 +186,18 @@
 		if (lot.images.length) { counts.push(lot.images.length + (lot.images.length > 1 ? " photos" : " photo")); }
 		if (lot.videos.length) { counts.push(lot.videos.length + (lot.videos.length > 1 ? " videos" : " video")); }
 		var canView = lot.images.length + lot.videos.length > 0;
+		var actualLot = has(lot.actual) && String(lot.actual).trim() !== String(lot.number).trim() ? lot.actual : "";
 
 		return '<article class="lot-card status-' + lot.status + '" data-lot="' + esc(lot.id) + '">' +
 			'<div class="lot-media"' + (canView ? ' data-open="1" tabindex="0" role="button" aria-label="View lot ' + esc(lot.number) + ' media"' : "") + ">" +
 				media +
-				'<span class="lot-status">' + esc(statusText(lot.status)) + "</span>" +
-				(counts.length ? '<span class="lot-count">' + counts.join(" · ") + "</span>" : "") +
+				'<span class="lot-count">' + counts.join(" · ") + "</span>" +
 			"</div>" +
 			'<div class="lot-body">' +
-				"<h4>Lot " + esc(lot.number) + "</h4>" +
+				'<div class="lot-header-row"><span class="lot-status">' + esc(statusText(lot.status)) + '</span><span class="lot-number">Lot ' + esc(lot.number) + "</span></div>" +
 				'<dl class="lot-specs">' +
 					specRow(t("stock.no_of_logs", "No. of logs"), lot.logs) +
-					specRow(t("stock.actual_lot", "Actual Lot"), lot.actual) +
+					specRow(t("stock.actual_lot", "Actual Lot"), actualLot) +
 					specRow(t("stock.depot", "Depot"), lot.depot) +
 					specRow(t("stock.auction_date", "Auction Date"), lot.auctionDate) +
 					specRow(t("stock.quantity", "Quantity"), has(lot.qty) ? fmtQty(lot.qty) + " m³" : "") +
@@ -240,7 +240,7 @@
 			}).join("");
 
 		return '<div class="stock-filters" role="group" aria-label="Filter lots">' +
-			'<button type="button" class="stock-filter-heading" data-filter-toggle="1" aria-expanded="false"><i class="fa fa-filter" aria-hidden="true"></i><span>Fiters</span></button>' +
+			'<button type="button" class="stock-filter-heading" data-filter-toggle="1" aria-expanded="false"><i class="fa fa-filter" aria-hidden="true"></i><span>Filters</span></button>' +
 			'<div class="stock-filter-status">' + statusButtons + '<button type="button" class="stock-filter-reset" data-filter-reset="1">' + esc(t("stock.reset_filters", "Reset")) + "</button></div>" +
 			'<div class="stock-filter-dimensions is-hidden">' +
 				'<div class="stock-slider-group">' +
