@@ -40,6 +40,10 @@
 			"contact.select_timber": "Select Timber Type",
 			"contact.message": "Message",
 			"contact.message_placeholder": "Specify Your Requirements",
+			"contact.attachment": "Attachment (optional)",
+			"contact.attachment_help": "Accepted: PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, RAR (max 10MB)",
+			"contact.attachment_size_error": "Attachment must be 10MB or smaller.",
+			"contact.attachment_type_error": "Invalid attachment type. Please upload PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, or RAR files.",
 			"contact.not_robot": "I'm not a robot",
 			"contact.submit": "Submit",
 			"contact.form_success": "Thanks For Contacting CenturyWood Timbers. We will Get You Shortly",
@@ -99,6 +103,10 @@
 			"contact.select_timber": "टिम्बर प्रकार चुनें",
 			"contact.message": "संदेश",
 			"contact.message_placeholder": "अपनी आवश्यकता लिखें",
+			"contact.attachment": "अटैचमेंट (वैकल्पिक)",
+			"contact.attachment_help": "स्वीकार्य: PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, RAR (अधिकतम 10MB)",
+			"contact.attachment_size_error": "अटैचमेंट 10MB या उससे कम होना चाहिए।",
+			"contact.attachment_type_error": "अमान्य अटैचमेंट प्रकार। कृपया PDF, DOC, DOCX, TXT, JPG, PNG, ZIP या RAR फ़ाइल अपलोड करें।",
 			"contact.not_robot": "मैं रोबोट नहीं हूँ",
 			"contact.submit": "सबमिट करें",
 			"contact.form_success": "CenturyWood Timbers से संपर्क करने के लिए धन्यवाद। हम जल्द आपसे संपर्क करेंगे।",
@@ -155,6 +163,10 @@
 			"contact.select_timber": "ಟಿಂಬರ್ ಪ್ರಕಾರ ಆಯ್ಕೆಮಾಡಿ",
 			"contact.message": "ಸಂದೇಶ",
 			"contact.message_placeholder": "ನಿಮ್ಮ ಅಗತ್ಯವನ್ನು ಬರೆಯಿರಿ",
+			"contact.attachment": "ಲಗತ್ತು (ಐಚ್ಛಿಕ)",
+			"contact.attachment_help": "ಸ್ವೀಕಾರ: PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, RAR (ಗರಿಷ್ಠ 10MB)",
+			"contact.attachment_size_error": "ಲಗತ್ತು 10MB ಅಥವಾ ಅದಕ್ಕಿಂತ ಕಡಿಮೆ ಇರಬೇಕು.",
+			"contact.attachment_type_error": "ಅಮಾನ್ಯ ಲಗತ್ತು ಪ್ರಕಾರ. ದಯವಿಟ್ಟು PDF, DOC, DOCX, TXT, JPG, PNG, ZIP ಅಥವಾ RAR ಫೈಲ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ.",
 			"contact.not_robot": "ನಾನು ರೋಬೋಟ್ ಅಲ್ಲ",
 			"contact.submit": "ಸಲ್ಲಿಸಿ",
 			"contact.form_success": "CenturyWood Timbers ಸಂಪರ್ಕಿಸಿದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು. ನಾವು ಶೀಘ್ರದಲ್ಲೇ ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತೇವೆ.",
@@ -211,6 +223,10 @@
 			"contact.select_timber": "টিম্বারের ধরন নির্বাচন করুন",
 			"contact.message": "বার্তা",
 			"contact.message_placeholder": "আপনার প্রয়োজন লিখুন",
+			"contact.attachment": "সংযুক্তি (ঐচ্ছিক)",
+			"contact.attachment_help": "গ্রহণযোগ্য: PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, RAR (সর্বোচ্চ 10MB)",
+			"contact.attachment_size_error": "সংযুক্তি 10MB বা তার কম হতে হবে।",
+			"contact.attachment_type_error": "অবৈধ সংযুক্তির ধরন। অনুগ্রহ করে PDF, DOC, DOCX, TXT, JPG, PNG, ZIP বা RAR ফাইল আপলোড করুন।",
 			"contact.not_robot": "আমি রোবট নই",
 			"contact.submit": "জমা দিন",
 			"contact.form_success": "CenturyWood Timbers-এ যোগাযোগ করার জন্য ধন্যবাদ। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।",
@@ -266,6 +282,10 @@
 			"contact.select_timber": "மர வகையை தேர்ந்தெடுக்கவும்",
 			"contact.message": "செய்தி",
 			"contact.message_placeholder": "உங்கள் தேவையை குறிப்பிடவும்",
+			"contact.attachment": "இணைப்பு (விருப்பத்தேர்வு)",
+			"contact.attachment_help": "ஏற்கப்படும்: PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, RAR (அதிகபட்சம் 10MB)",
+			"contact.attachment_size_error": "இணைப்பு 10MB அல்லது அதற்குக் குறைவாக இருக்க வேண்டும்.",
+			"contact.attachment_type_error": "தவறான இணைப்பு வகை. தயவுசெய்து PDF, DOC, DOCX, TXT, JPG, PNG, ZIP அல்லது RAR கோப்புகளைப் பதிவேற்றவும்.",
 			"contact.not_robot": "நான் ரோபோ இல்லை",
 			"contact.submit": "சமர்ப்பிக்கவும்",
 			"contact.form_success": "CenturyWood Timbers-ஐ தொடர்புகொண்டதற்கு நன்றி. விரைவில் உங்களைத் தொடர்புகொள்கிறோம்.",
@@ -321,6 +341,10 @@
 			"contact.select_timber": "ടിംബർ തരം തിരഞ്ഞെടുക്കുക",
 			"contact.message": "സന്ദേശം",
 			"contact.message_placeholder": "നിങ്ങളുടെ ആവശ്യകത വ്യക്തമാക്കുക",
+			"contact.attachment": "അറ്റാച്ച്മെന്റ് (ഐച്ഛികം)",
+			"contact.attachment_help": "സ്വീകരിക്കുന്നത്: PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, RAR (പരമാവധി 10MB)",
+			"contact.attachment_size_error": "അറ്റാച്ച്മെന്റ് 10MB അല്ലെങ്കിൽ അതിൽ താഴെയായിരിക്കണം.",
+			"contact.attachment_type_error": "അസാധുവായ അറ്റാച്ച്മെന്റ് തരം. ദയവായി PDF, DOC, DOCX, TXT, JPG, PNG, ZIP, അല്ലെങ്കിൽ RAR ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യുക.",
 			"contact.not_robot": "ഞാൻ റോബോട്ട് അല്ല",
 			"contact.submit": "സമർപ്പിക്കുക",
 			"contact.form_success": "CenturyWood Timbers-നെ ബന്ധപ്പെട്ടതിന് നന്ദി. ഉടൻ തന്നെ ഞങ്ങൾ നിങ്ങളെ ബന്ധപ്പെടും.",
@@ -393,6 +417,10 @@
 		document.dispatchEvent(new CustomEvent("cw:lang-changed", { detail: { lang: currentLang } }));
 	}
 
+	function getLanguageSelects() {
+		return document.querySelectorAll("select#cw-lang-select, .lang-switcher select");
+	}
+
 	function setLang(lang, persist) {
 		var next = hasLang(lang) ? lang : "en";
 		currentLang = next;
@@ -401,25 +429,30 @@
 			localStorage.setItem(PROMPTED_KEY, "1");
 		}
 		applyTranslations();
-		var select = document.getElementById("cw-lang-select");
-		if (select && select.value !== next) { select.value = next; }
+		var selects = getLanguageSelects();
+		for (var i = 0; i < selects.length; i++) {
+			if (selects[i].value !== next) { selects[i].value = next; }
+		}
 	}
 
 	function ensureSwitcher() {
-		var select = document.getElementById("cw-lang-select");
-		if (!select || select.getAttribute("data-ready") === "1") { return; }
-		select.innerHTML = "";
-		Object.keys(LANG_META).forEach(function (lang) {
-			var option = document.createElement("option");
-			option.value = lang;
-			option.textContent = LANG_META[lang].label;
-			select.appendChild(option);
-		});
-		select.value = currentLang;
-		select.addEventListener("change", function () {
-			setLang(select.value, true);
-		});
-		select.setAttribute("data-ready", "1");
+		var selects = getLanguageSelects();
+		for (var i = 0; i < selects.length; i++) {
+			var select = selects[i];
+			if (!select || select.getAttribute("data-ready") === "1") { continue; }
+			select.innerHTML = "";
+			Object.keys(LANG_META).forEach(function (lang) {
+				var option = document.createElement("option");
+				option.value = lang;
+				option.textContent = LANG_META[lang].label;
+				select.appendChild(option);
+			});
+			select.value = currentLang;
+			select.addEventListener("change", function () {
+				setLang(this.value, true);
+			});
+			select.setAttribute("data-ready", "1");
+		}
 	}
 
 	function maybePromptDetectedLanguage() {
@@ -450,9 +483,13 @@
 		var timer = setInterval(function () {
 			ensureSwitcher();
 			applyTranslations();
-			var select = document.getElementById("cw-lang-select");
+			var selects = getLanguageSelects();
+			var readyCount = 0;
+			for (var i = 0; i < selects.length; i++) {
+				if (selects[i].getAttribute("data-ready") === "1") { readyCount += 1; }
+			}
 			attempts += 1;
-			if ((select && select.getAttribute("data-ready") === "1") || attempts >= maxAttempts) {
+			if ((selects.length && readyCount === selects.length) || attempts >= maxAttempts) {
 				clearInterval(timer);
 			}
 		}, 300);

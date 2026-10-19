@@ -1,4 +1,4 @@
-@charset "UTF-8";
+    @charset "UTF-8";
 @import url(animate.css);
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 @import url(sawmill.css);
@@ -753,6 +753,16 @@ strong {
   padding-left: 44px;
   font-size: 12px;
   line-height: 14px;
+}
+
+.header-gst {
+  display: inline-block;
+  margin-top: 6px;
+  color: #6c6a6a;
+}
+
+.header-gst-label {
+  color: #6c6a6a;
 }
 
 .header_info:before {
