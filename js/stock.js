@@ -179,9 +179,12 @@
 
 	function lotCard(title, lot) {
 		var cover = lot.images[0];
+		var coverVideo = !cover && lot.videos.length ? safeUrl(lot.videos[0]) : "";
 		var media = cover
 			? '<img src="' + esc(safeUrl(cover.url)) + '" alt="' + esc(cover.alt || (title + " lot " + lot.number)) + '" loading="lazy">'
-			: '<span class="lot-nophoto">' + esc(t("stock.no_photo", "No photo")) + "</span>";
+			: (coverVideo
+				? '<video src="' + esc(coverVideo) + '" muted playsinline preload="metadata" aria-label="Video preview for lot ' + esc(lot.number) + '"></video>'
+				: '<span class="lot-nophoto">' + esc(t("stock.no_photo", "No photo")) + "</span>");
 		var counts = [];
 		if (lot.images.length) { counts.push(lot.images.length + (lot.images.length > 1 ? " photos" : " photo")); }
 		if (lot.videos.length) { counts.push(lot.videos.length + (lot.videos.length > 1 ? " videos" : " video")); }

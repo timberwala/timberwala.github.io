@@ -26,7 +26,8 @@
 		original: null,
 		pendingDeletes: [],
 		newUploads: [],
-		removedInDialog: []
+		removedInDialog: [],
+		uploading: false
 	};
 
 	function say(el, text, kind) {
@@ -47,7 +48,13 @@
 		return isFinite(n) ? n : null;
 	}
 
-	function safeArray(v) { return Array.isArray(v) ? v : []; }
+	function safeArray(v) {
+		return Array.isArray(v) ? v : [];
+	}
+
+	function hasText(v) {
+		return v !== null && v !== undefined && String(v).trim() !== "";
+	}
 
 	function monthAbbrFromIso(iso) {
 		if (!/^\d{4}-\d{2}-\d{2}$/.test(String(iso || ""))) { return null; }
@@ -59,10 +66,81 @@
 	function buildDisplayLot(depotCode, actualLotNumber, auctionDateIso) {
 		var depot = String(depotCode || "").trim().toUpperCase();
 		var actual = String(actualLotNumber || "").trim();
-		var day = /^\d{4}-\d{2}-\d{2}$/.test(String(auctionDateIso || "")) ? String(auctionDateIso).slice(8, 10) : "";
-		var month = monthAbbrFromIso(auctionDateIso) || "";
-		if (!depot || !actual || !day || !month) { return ""; }
-		return depot + "_" + actual + "_" + day + "_" + month;
+		var date = String(auctionDateIso || "");
+		var month = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date.slice(5, 7) : "";
+		var year2 = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date.slice(2, 4) : "";
+		if (!depot || !actual || !month || !year2) { return ""; }
+		return depot + "_" + actual + "_" + month + "_" + year2;
+	}
+
+	function parseGeneratedLotNumber(lotNumber) {
+		var text = String(lotNumber || "").trim();
+		if (!text) { return null; }
+		var parts = text.split("_");
+		if (parts.length < 4) { return null; }
+
+		var depot = String(parts[0] || "").trim().toUpperCase();
+		var yy = String(parts[parts.length - 1] || "").trim();
+		var mm = String(parts[parts.length - 2] || "").trim();
+		var actual = parts.slice(1, parts.length - 2).join("_").trim();
+		if (!depot || !actual || !/^\d{2}$/.test(mm) || !/^\d{2}$/.test(yy)) { return null; }
+
+		var monthNum = Number(mm);
+		if (monthNum < 1 || monthNum > 12) { return null; }
+		var year = Number(yy) >= 70 ? "19" + yy : "20" + yy;
+		var auctionDate = year + "-" + mm + "-01";
+		return {
+			depot_code: depot,
+			actual_lot_number: actual,
+			auction_date: auctionDate,
+			display_lot_number: text,
+			upload_lot: text
+		};
+	}
+
+	function buildLotIdentity(depotCode, actualLotNumber, auctionDateIso) {
+		var depot = String(depotCode || "").trim().toUpperCase();
+		var actual = String(actualLotNumber || "").trim();
+		var auctionDate = String(auctionDateIso || "").trim();
+		var displayLot = buildDisplayLot(depot, actual, auctionDate);
+		if (!displayLot) { return null; }
+		return {
+			depot_code: depot,
+			actual_lot_number: actual,
+			auction_date: auctionDate,
+			display_lot_number: displayLot,
+			upload_lot: displayLot
+		};
+	}
+
+	function buildLotFromInputRow(row) {
+		row = row || {};
+		var identity = buildLotIdentity(row.depot_code, row.actual_lot_number, row.auction_date);
+		if (!identity) { return null; }
+		return {
+			depot_code: identity.depot_code,
+			auction_date: identity.auction_date,
+			actual_lot_number: identity.actual_lot_number,
+			display_lot_number: identity.display_lot_number,
+			lot_number: identity.display_lot_number,
+			status: row.status === "sold_out" ? "sold_out" : "available",
+			quantity_m3: toNumberOrNull(row.quantity_m3),
+			number_of_logs: toNumberOrNull(row.number_of_logs),
+			class: row.class == null || row.class === "" ? null : String(row.class),
+			price: row.price == null || row.price === "" ? null : String(row.price),
+			length_range: row.length_range == null || row.length_range === "" ? null : String(row.length_range),
+			girth_range: row.girth_range == null || row.girth_range === "" ? null : String(row.girth_range),
+			comment: row.comment == null || row.comment === "" ? null : String(row.comment)
+		};
+	}
+
+	function buildUploadTarget(productType, depotCode, actualLotNumber, auctionDateIso) {
+		var identity = buildLotIdentity(depotCode, actualLotNumber, auctionDateIso);
+		if (!productType || !identity) { return null; }
+		var params = new URLSearchParams();
+		params.set("product", productType);
+		params.set("lot", identity.upload_lot);
+		return { lot: identity.display_lot_number, query: "/api/upload?" + params.toString() };
 	}
 
 	function setToken(next) {
@@ -109,14 +187,20 @@
 	function normalizeLot(lot) {
 		lot = lot || {};
 		var media = lot.media || {};
-		var actualLot = lot.actual_lot_number == null ? lot.lot_number : lot.actual_lot_number;
-		var displayLot = lot.display_lot_number || buildDisplayLot(lot.depot_code, actualLot, lot.auction_date);
+		var parsed = parseGeneratedLotNumber(lot.lot_number);
+		var depotCode = hasText(lot.depot_code) ? String(lot.depot_code).toUpperCase() : (parsed ? parsed.depot_code : "");
+		var auctionDate = hasText(lot.auction_date) ? String(lot.auction_date) : (parsed ? parsed.auction_date : "");
+		var actualLot = hasText(lot.actual_lot_number) ? String(lot.actual_lot_number) : (parsed ? parsed.actual_lot_number : (lot.lot_number == null ? null : String(lot.lot_number)));
+		var displayLot = hasText(lot.display_lot_number)
+			? String(lot.display_lot_number)
+			: ((parsed && parsed.display_lot_number) || buildDisplayLot(depotCode, actualLot, auctionDate));
+		var lotNumber = hasText(lot.lot_number) ? String(lot.lot_number) : (displayLot || null);
 		return {
 			lot_id: lot.lot_id || ("lot_" + String(displayLot || actualLot || "").toLowerCase().replace(/[^a-z0-9_]+/g, "_")),
-			lot_number: actualLot == null ? null : String(actualLot),
+			lot_number: lotNumber,
 			actual_lot_number: actualLot == null ? null : String(actualLot),
-			depot_code: lot.depot_code == null ? "" : String(lot.depot_code).toUpperCase(),
-			auction_date: lot.auction_date == null ? "" : String(lot.auction_date),
+			depot_code: depotCode,
+			auction_date: auctionDate,
 			display_lot_number: displayLot || null,
 			status: lot.status === "sold_out" ? "sold_out" : "available",
 			quantity_m3: toNumberOrNull(lot.quantity_m3),
@@ -236,6 +320,7 @@
 		state.original = isNew ? null : lot;
 		state.newUploads = [];
 		state.removedInDialog = [];
+		state.uploading = false;
 
 		$("lot-dialog-title").textContent = isNew ? "Add lot" : "Edit lot " + (lot.display_lot_number || lot.lot_number || "");
 		var form = $("lot-form");
@@ -244,6 +329,7 @@
 		});
 
 		say($("upload-msg"), "");
+		resetUploadProgress();
 		renderDialogMedia();
 		$("lot-dialog").showModal();
 	}
@@ -306,26 +392,57 @@
 		renderDialogMedia();
 	}
 
+	function resetUploadProgress() {
+		var bar = $("upload-progress");
+		var label = $("upload-progress-label");
+		if (!bar || !label) { return; }
+		bar.hidden = true;
+		bar.max = 1;
+		bar.value = 0;
+		label.textContent = "";
+	}
+
+	function showUploadProgress(done, total) {
+		var bar = $("upload-progress");
+		var label = $("upload-progress-label");
+		if (!bar || !label) { return; }
+		bar.hidden = false;
+		bar.max = Math.max(total, 1);
+		bar.value = Math.min(done, total);
+		label.textContent = done + " / " + total + " uploaded";
+	}
+
 	function uploadFiles(files) {
-		var form = $("lot-form").elements;
-		var depot = String(form.depot_code.value || "").trim().toUpperCase();
-		var actual = String(form.actual_lot_number.value || "").trim();
-		var auctionDate = String(form.auction_date.value || "").trim();
-		var displayLot = buildDisplayLot(depot, actual, auctionDate);
-		if (!displayLot) {
-			say($("upload-msg"), "Enter depot code, actual lot number and auction date before uploading.", "err");
+		if (state.uploading) {
+			say($("upload-msg"), "Upload already in progress. Please wait...", "err");
 			return Promise.resolve();
 		}
+
+		var form = $("lot-form").elements;
+		var target = buildUploadTarget(
+			state.productType,
+			form.depot_code.value,
+			form.actual_lot_number.value,
+			form.auction_date.value
+		);
+		if (!target) {
+			say($("upload-msg"), "Enter depot code, actual lot number and auction date before uploading.", "err");
+			resetUploadProgress();
+			return Promise.resolve();
+		}
+		var displayLot = target.lot;
+		var total = files.length;
+		var uploaded = 0;
+		var picker = $("file-picker");
+		state.uploading = true;
+		if (picker) { picker.disabled = true; }
+		showUploadProgress(uploaded, total);
 
 		var chain = Promise.resolve();
 		files.forEach(function (file, idx) {
 			chain = chain.then(function () {
-				say($("upload-msg"), "Uploading " + (idx + 1) + " of " + files.length + ": " + file.name + " ...");
-				var query = "/api/upload?product=" + encodeURIComponent(state.productType) +
-					"&depot=" + encodeURIComponent(depot) +
-					"&actual=" + encodeURIComponent(actual) +
-					"&auction_date=" + encodeURIComponent(auctionDate);
-				return api(query, {
+				say($("upload-msg"), "Uploading " + (idx + 1) + " of " + total + ": " + file.name + " ...");
+				return api(target.query, {
 					method: "POST",
 					headers: { "Content-Type": file.type },
 					body: file
@@ -339,6 +456,8 @@
 							is_thumbnail: safeArray(state.editing.media.images).length === 0
 						});
 					}
+					uploaded += 1;
+					showUploadProgress(uploaded, total);
 					state.newUploads.push(result.url);
 					renderDialogMedia();
 				});
@@ -346,9 +465,12 @@
 		});
 
 		return chain.then(function () {
-			say($("upload-msg"), "Upload complete.", "ok");
+			say($("upload-msg"), "Upload complete: " + total + " of " + total + " file(s).", "ok");
 		}).catch(function (e) {
 			say($("upload-msg"), "Upload failed: " + e.message, "err");
+		}).finally(function () {
+			state.uploading = false;
+			if (picker) { picker.disabled = false; }
 		});
 	}
 
@@ -366,14 +488,14 @@
 		LOT_FIELDS.forEach(function (field) {
 			lot[field] = form.elements[field].value === "" ? null : form.elements[field].value;
 		});
-		lot.depot_code = String(lot.depot_code || "").trim().toUpperCase();
-		lot.actual_lot_number = String(lot.actual_lot_number || "").trim();
-		lot.auction_date = String(lot.auction_date || "").trim();
-		lot.display_lot_number = buildDisplayLot(lot.depot_code, lot.actual_lot_number, lot.auction_date);
-		lot.lot_number = lot.actual_lot_number;
-		lot.quantity_m3 = toNumberOrNull(lot.quantity_m3);
-		lot.number_of_logs = toNumberOrNull(lot.number_of_logs);
-		lot.status = lot.status === "sold_out" ? "sold_out" : "available";
+
+		var mapped = buildLotFromInputRow(lot);
+		if (!mapped) {
+			say($("upload-msg"), "Depot code, auction date and lot number are required.", "err");
+			return;
+		}
+
+		Object.assign(lot, mapped);
 		lot.lot_id = "lot_" + String(lot.display_lot_number || lot.lot_number).toLowerCase().replace(/[^a-z0-9_]+/g, "_");
 		lot.created_at = lot.created_at || new Date().toISOString().slice(0, 10);
 
