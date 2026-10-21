@@ -117,7 +117,7 @@
 				</select>
 			</label>
 			<label>Quantity (m3)
-				<input name="quantity_m3" type="number" min="0.01" step="0.01" required>
+				<input name="quantity_m3" type="number" min="0.01" step="any" required>
 			</label>
 			<label>No. of logs
 				<input name="number_of_logs" type="number" min="0">
@@ -145,6 +145,10 @@
 			<div id="media-grid" class="media-grid"></div>
 			<input id="file-picker" type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/webm">
 			<small>Allowed: JPG, PNG, WebP, MP4, WebM. Max 90 MB each. Click a photo to mark as cover.</small>
+			<div class="upload-progress-wrap">
+				<progress id="upload-progress" value="0" max="1" hidden></progress>
+				<small id="upload-progress-label"></small>
+			</div>
 			<p id="upload-msg" class="msg"></p>
 		</fieldset>
 

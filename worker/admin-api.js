@@ -161,10 +161,11 @@ function monthAbbrFromIso(iso) {
 function buildDisplayLot(depotCode, actualLot, auctionDateIso) {
 	const depot = String(depotCode || "").trim().toUpperCase();
 	const actual = String(actualLot || "").trim();
-	const day = /^\d{4}-\d{2}-\d{2}$/.test(String(auctionDateIso || "")) ? String(auctionDateIso).slice(8, 10) : "";
-	const month = monthAbbrFromIso(auctionDateIso) || "";
-	if (!depot || !actual || !day || !month) { return ""; }
-	return depot + "_" + actual + "_" + day + "_" + month;
+	const date = String(auctionDateIso || "");
+	const month = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date.slice(5, 7) : "";
+	const year2 = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date.slice(2, 4) : "";
+	if (!depot || !actual || !month || !year2) { return ""; }
+	return depot + "_" + actual + "_" + month + "_" + year2;
 }
 
 function safeSegment(text) {
@@ -210,7 +211,7 @@ function sanitizeMetadata(type, input, env) {
 
 		return {
 			lot_id: lotId,
-			lot_number: actualLot,
+			lot_number: displayLot,
 			actual_lot_number: actualLot,
 			depot_code: depotCode.toUpperCase(),
 			auction_date: auctionDate,
@@ -296,11 +297,8 @@ async function route(request, env, url) {
 
 	if (url.pathname === "/api/upload" && method === "POST") {
 		const type = url.searchParams.get("product");
-		const depot = url.searchParams.get("depot");
-		const actual = url.searchParams.get("actual");
-		const auctionDate = url.searchParams.get("auction_date");
-		const displayLot = buildDisplayLot(depot, actual, auctionDate);
-		if (!PRODUCT_TYPES.includes(type) || !displayLot) {
+		const lot = String(url.searchParams.get("lot") || "").trim();
+		if (!PRODUCT_TYPES.includes(type) || !lot) {
 			return reply({ error: "Invalid upload target." }, 400);
 		}
 
@@ -314,7 +312,7 @@ async function route(request, env, url) {
 			return reply({ error: "File too large (max " + (maxUploadBytes / (1024 * 1024)) + " MB)." }, 413);
 		}
 
-		const key = "products/" + type + "/lot_" + safeSegment(displayLot) + "/" + Date.now() + "-" + crypto.randomUUID().slice(0, 8) + "." + ext;
+		const key = "products/" + type + "/lot_" + safeSegment(lot) + "/" + Date.now() + "-" + crypto.randomUUID().slice(0, 8) + "." + ext;
 		await env.BUCKET.put(key, request.body, {
 			httpMetadata: {
 				contentType: contentType,
