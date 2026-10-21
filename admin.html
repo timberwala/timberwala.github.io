@@ -63,9 +63,15 @@
 		<table id="lots-table">
 			<thead>
 				<tr>
+					<th>Select</th>
 					<th>Lot</th>
 					<th>Status</th>
 					<th>Qty (m3)</th>
+					<th>Qty (cft)</th>
+					<th>Price / cft</th>
+					<th>Total price</th>
+					<th>Length range</th>
+					<th>Girth range</th>
 					<th>Logs</th>
 					<th>Class</th>
 					<th>Media</th>
@@ -76,6 +82,19 @@
 		</table>
 		<p id="empty-msg" class="empty" hidden>No lots yet. Click "Add lot".</p>
 	</main>
+
+	<section id="selection-summary" class="selection-summary" hidden>
+		<h2>Selected lots summary</h2>
+		<div class="selection-metrics">
+			<article><strong id="sel-count">0</strong><span>Selected lots</span></article>
+			<article><strong id="sel-total-cbm">0</strong><span>Total quantity (m3)</span></article>
+			<article><strong id="sel-total-cft">0</strong><span>Total quantity (cft)</span></article>
+			<article><strong id="sel-total-price">0</strong><span>Total price</span></article>
+			<article><strong id="sel-avg-cft-price">0</strong><span>Avg cft price</span></article>
+			<article><strong id="sel-girth-over-3">0%</strong><span>Girth material above 3 ft</span></article>
+			<article><strong id="sel-length-over-12">0%</strong><span>Length material 12 ft and above</span></article>
+		</div>
+	</section>
 </section>
 
 <dialog id="lot-dialog">
