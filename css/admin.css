@@ -275,6 +275,55 @@ legend { padding: 0 6px; color: #666; font-size: 13px; }
 	color: #666;
 }
 
+#lots-table th:first-child,
+#lots-table td:first-child {
+	width: 58px;
+	text-align: center;
+}
+
+#lots-table td:first-child input[type="checkbox"] {
+	width: auto;
+	margin-top: 0;
+	transform: scale(1.1);
+}
+
+.selection-summary {
+	margin-top: 14px;
+	padding: 14px;
+	background: #fff;
+	border: 1px solid #ebe6d7;
+	border-radius: 8px;
+}
+
+.selection-summary h2 {
+	margin: 0 0 10px;
+	font-size: 18px;
+}
+
+.selection-metrics {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+	gap: 8px;
+}
+
+.selection-metrics article {
+	padding: 10px;
+	border-radius: 6px;
+	background: #fbf9f1;
+	border: 1px solid #efe9d6;
+}
+
+.selection-metrics strong {
+	display: block;
+	font-size: 22px;
+	line-height: 1.2;
+}
+
+.selection-metrics span {
+	font-size: 12px;
+	color: #666;
+}
+
 @media (max-width: 920px) {
 	.metrics { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
 }
