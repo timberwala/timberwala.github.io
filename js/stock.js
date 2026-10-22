@@ -207,7 +207,7 @@
 					specRow(t("stock.class", "Class"), lot.cls) +
 					specRow(t("stock.length", "Length"), lot.length) +
 					specRow(t("stock.girth", "Girth"), lot.girth) +
-					specRow(t("stock.price", "Price"), lot.price) +
+
 					specRow(t("stock.listed", "Listed"), has(lot.created) ? fmtDate(lot.created) : "") +
 				"</dl>" +
 				(has(lot.comment) ? '<p class="lot-comment">' + esc(lot.comment) + "</p>" : "") +
