@@ -243,9 +243,9 @@
 			}).join("");
 
 		return '<div class="stock-filters" role="group" aria-label="Filter lots">' +
-			'<button type="button" class="stock-filter-heading" data-filter-toggle="1" aria-expanded="false"><i class="fa fa-filter" aria-hidden="true"></i><span>Filters</span></button>' +
+			'<p class="stock-filter-heading"><i class="fa fa-filter" aria-hidden="true"></i><span>Filters</span></p>' +
 			'<div class="stock-filter-status">' + statusButtons + '<button type="button" class="stock-filter-reset" data-filter-reset="1">' + esc(t("stock.reset_filters", "Reset")) + "</button></div>" +
-			'<div class="stock-filter-dimensions is-hidden">' +
+			'<div class="stock-filter-dimensions">' +
 				'<div class="stock-slider-group">' +
 					'<label>' + esc(t("stock.length", "Length")) + ' (' + esc(t("stock.unit_feet", "ft")) + ')</label>' +
 					'<div class="stock-slider-values"><span data-length-min-value></span><span class="stock-filter-sep">to</span><span data-length-max-value></span></div>' +
@@ -416,6 +416,10 @@
 			var visibleLots = [];
 			[].forEach.call(root.querySelectorAll(".lot-card"), function (card) {
 				var lot = byId[card.getAttribute("data-lot")];
+				if (!lot) {
+					card.hidden = true;
+					return;
+				}
 				var ok = true;
 
 				if (status !== "all" && lot.status !== status) { ok = false; }
@@ -423,12 +427,28 @@
 				if (ok && girthRange) { ok = !!lot.girthFeet && overlaps(lot.girthFeet, girthRange); }
 
 				card.hidden = !ok;
-				if (ok) { visibleLots.push(lot); }
+				if (ok) {
+					card.style.visibility = "visible";
+					visibleLots.push(lot);
+				}
 			});
 
 			var summaryWrap = root.querySelector(".stock-summary-wrap");
 			if (summaryWrap) {
 				summaryWrap.innerHTML = summary(visibleLots, data);
+			}
+
+			var grid = root.querySelector(".lot-grid");
+			var emptyFilterMsg = root.querySelector(".stock-empty-filter");
+			if (!visibleLots.length) {
+				if (!emptyFilterMsg && grid && grid.parentNode) {
+					emptyFilterMsg = document.createElement("p");
+					emptyFilterMsg.className = "stock-empty stock-empty-filter";
+					emptyFilterMsg.textContent = t("stock.empty_filtered", "No lots match this filter. Try resetting filters.");
+					grid.parentNode.insertBefore(emptyFilterMsg, grid);
+				}
+			} else if (emptyFilterMsg && emptyFilterMsg.parentNode) {
+				emptyFilterMsg.parentNode.removeChild(emptyFilterMsg);
 			}
 		}
 
@@ -468,15 +488,6 @@
 		}
 
 		filterScope.addEventListener("click", function (e) {
-			var toggle = e.target.closest("[data-filter-toggle]");
-			if (toggle) {
-				var panel = filterScope.querySelector(".stock-filter-dimensions");
-				if (panel) {
-					var hidden = panel.classList.toggle("is-hidden");
-					toggle.setAttribute("aria-expanded", hidden ? "false" : "true");
-				}
-				return;
-			}
 
 			var reset = e.target.closest("[data-filter-reset]");
 			if (reset) {
