@@ -147,7 +147,9 @@
                 _results1 = [];
                 for (_k = 0, _len2 = _ref1.length; _k < _len2; _k++) {
                   node = _ref1[_k];
-                  _results1.push(this.doSync(node));
+                  if (node && node.nodeType === 1) {
+                    _results1.push(this.doSync(node));
+                  }
                 }
                 return _results1;
               }).call(_this));
@@ -181,6 +183,9 @@
       if (!this.stopped) {
         element || (element = this.element);
         element = element.parentNode || element;
+        if (!(element && typeof element.getElementsByClassName === 'function')) {
+          return;
+        }
         _ref = element.getElementsByClassName(this.config.boxClass);
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {

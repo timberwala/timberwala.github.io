@@ -68,18 +68,12 @@
 .stock-filters { margin-bottom: 24px; }
 
 .stock-filter-heading {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	margin-bottom: 10px;
+	display: block;
+	margin: 0 0 10px;
 	font: 700 13px/1 "Open Sans", sans-serif;
 	letter-spacing: 0.4px;
 	text-transform: uppercase;
 	color: #444;
-	border: 0;
-	background: transparent;
-	padding: 0;
-	cursor: pointer;
 }
 
 .stock-filter-heading .fa {
