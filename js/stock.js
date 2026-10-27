@@ -58,6 +58,13 @@
 		return isNaN(x) ? String(n) : x.toLocaleString("en-IN", { maximumFractionDigits: 2 });
 	}
 
+	function fmtPrice(v) {
+		if (!has(v)) { return ""; }
+		var x = parseFloat(v);
+		if (isNaN(x)) { return String(v); }
+		return x.toLocaleString("en-IN", { maximumFractionDigits: 2 });
+	}
+
 	function findLotQuery() {
 		try {
 			var params = new URLSearchParams(window.location.search || "");
@@ -204,6 +211,7 @@
 					specRow(t("stock.depot", "Depot"), lot.depot) +
 					specRow(t("stock.auction_date", "Auction Date"), lot.auctionDate) +
 					specRow(t("stock.quantity", "Quantity"), has(lot.qty) ? fmtQty(lot.qty) + " m³" : "") +
+					specRow(t("stock.price", "Price Per CFT"), fmtPrice(lot.price)) +
 					specRow(t("stock.class", "Class"), lot.cls) +
 					specRow(t("stock.length", "Length"), lot.length) +
 					specRow(t("stock.girth", "Girth"), lot.girth) +
